@@ -8,4 +8,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+
 Route::post('/company', [CompanyController::class, 'store']);
+Route::get('/company', [CompanyController::class, 'index']);
+

@@ -17,4 +17,9 @@ class CompanyController extends Controller
 
         return new CompanyResource($company);
     }
+
+    public function index()
+    {
+        return CompanyResource::collection(Company::all());
+    }
 }
