@@ -35,4 +35,9 @@ class CompanyController extends Controller
 
         return new CompanyResource($company);
     }
+
+    public function destroy(Company $company)
+    {
+        $company->delete();
+    }
 }
