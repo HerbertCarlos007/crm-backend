@@ -11,4 +11,5 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/company', [CompanyController::class, 'store']);
 Route::get('/company', [CompanyController::class, 'index']);
+Route::get('/company/{company}', [CompanyController::class, 'show']);
 

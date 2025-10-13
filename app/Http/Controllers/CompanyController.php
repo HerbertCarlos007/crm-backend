@@ -22,4 +22,9 @@ class CompanyController extends Controller
     {
         return CompanyResource::collection(Company::all());
     }
+
+    public function show(Company $company)
+    {
+        return new CompanyResource($company);
+    }
 }
