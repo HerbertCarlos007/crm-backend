@@ -27,4 +27,12 @@ class CompanyController extends Controller
     {
         return new CompanyResource($company);
     }
+
+    public function update(StoreUpdateCompanyRequest $request, Company $company)
+    {
+        $validated = $request->validated();
+        $company->update($validated);
+
+        return new CompanyResource($company);
+    }
 }
