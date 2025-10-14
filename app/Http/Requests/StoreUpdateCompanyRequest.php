@@ -35,7 +35,7 @@ class StoreUpdateCompanyRequest extends FormRequest
             'country' => ['string'],
             'phone_number' => ['string'],
             'company_email' => ['string'],
-            'logo_url' => ['string'],
+            'logo_url' => ['nullable', 'image', 'max:2048']
         ];
     }
 }

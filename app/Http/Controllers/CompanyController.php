@@ -5,13 +5,24 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUpdateCompanyRequest;
 use App\Http\Resources\CompanyResource;
 use App\Models\Company;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller
 {
     public function store(StoreUpdateCompanyRequest $request)
     {
+        $logoPath = null;
+        $logoUrl = null;
+
+      if($request->hasFile('logo_url')) {
+          $logoPath = request()->file('logo_url')->store('avatars', 's3');
+          Storage::disk('s3')->setVisibility($logoPath, 'public');
+
+          $logoUrl = Storage::disk('s3')->url($logoPath);
+      }
+
         $validated = $request->validated();
+        $validated['logo_url'] = $logoUrl;
 
         $company = Company::create($validated);
 
