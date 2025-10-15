@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/users', [UserController::class, 'store']);
+Route::get('/users/{user}', [UserController::class, 'show']);
 Route::get('/users/{companyId}', [UserController::class, 'index']);
+
 
 
 Route::get('/user', function (Request $request) {

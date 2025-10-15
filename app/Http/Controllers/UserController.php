@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateUserRequest;
 use App\Http\Resources\UserResource;
+use App\Models\Company;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use function Symfony\Component\String\u;
@@ -41,6 +42,9 @@ class UserController extends Controller
         return UserResource::collection($users);
     }
 
-
+    public function show(User $user)
+    {
+        return new UserResource($user);
+    }
 
 }
