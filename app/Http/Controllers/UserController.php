@@ -6,6 +6,7 @@ use App\Http\Requests\StoreUpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use function Symfony\Component\String\u;
 
 class UserController extends Controller
 {
@@ -33,5 +34,13 @@ class UserController extends Controller
             'token_type' => 'Bearer'
         ], 201);
     }
+
+    public function index($companyId)
+    {
+        $users = User::where('company_id', $companyId)->get();
+        return UserResource::collection($users);
+    }
+
+
 
 }
