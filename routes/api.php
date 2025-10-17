@@ -10,7 +10,7 @@ Route::post('/users', [UserController::class, 'store']);
 Route::get('/users/{user}', [UserController::class, 'show']);
 Route::get('/users/{companyId}', [UserController::class, 'index']);
 
-
+Route::post('/login', [UserController::class, 'login']);
 
 Route::get('/user', function (Request $request) {
     return $request->user();
