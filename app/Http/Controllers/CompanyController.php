@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class CompanyController extends Controller
 {
     public function store(StoreUpdateCompanyRequest $request)
-    {
+     {
         $logoPath = null;
         $logoUrl = null;
 
