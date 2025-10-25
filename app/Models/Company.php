@@ -28,4 +28,9 @@ class Company extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function stages(): HasMany
+    {
+        return $this->hasMany(Stage::class);
+    }
 }
