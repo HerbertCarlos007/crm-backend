@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CompanyController;
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\StageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -25,3 +26,6 @@ Route::delete('/company/{company}', [CompanyController::class, 'destroy']);
 
 Route::post('/stage', [StageController::class, 'store']);
 Route::get('/stage/{companyId}', [StageController::class, 'index']);
+
+Route::post('/customer', [CustomerController::class, 'store']);
+Route::get('/customer/{companyId}', [CustomerController::class, 'index']);

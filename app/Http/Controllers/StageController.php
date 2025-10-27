@@ -10,8 +10,8 @@ class StageController extends Controller
 {
     public function store(StoreUpdateStageRequest $request)
     {
-       $validated = $request->validated();
-       $stage = Stage::create($validated);
+        $validated = $request->validated();
+        $stage = Stage::create($validated);
         return new StageResource($stage);
     }
 
