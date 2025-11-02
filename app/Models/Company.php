@@ -33,4 +33,9 @@ class Company extends Model
     {
         return $this->hasMany(Stage::class);
     }
+
+    public function negotiations(): HasMany
+    {
+        return $this->hasMany(Negotiation::class);
+    }
 }

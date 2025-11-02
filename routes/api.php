@@ -3,6 +3,7 @@
 use App\Http\Controllers\CompanyController;
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\NegotiationController;
 use App\Http\Controllers\StageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -29,3 +30,6 @@ Route::get('/stage/{companyId}', [StageController::class, 'index']);
 
 Route::post('/customer', [CustomerController::class, 'store']);
 Route::get('/customer/{companyId}', [CustomerController::class, 'index']);
+
+Route::post('/negotiation', [NegotiationController::class, 'store']);
+Route::get('/negotiation/{companyId}', [NegotiationController::class, 'index']);
