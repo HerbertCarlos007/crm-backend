@@ -29,4 +29,10 @@ class Negotiation extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    public function stage(): BelongsTo
+    {
+        return $this->belongsTo(Stage::class);
+    }
+
 }

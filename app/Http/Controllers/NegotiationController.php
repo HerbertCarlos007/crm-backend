@@ -17,7 +17,9 @@ class NegotiationController extends Controller
 
     public function index($companyId)
     {
-        $negotiations = Negotiation::where('company_id', $companyId)->get();
+        $negotiations = Negotiation::with('stage:id,name')
+        ->where('company_id', $companyId)
+        ->get();
         return NegotiationResource::collection($negotiations);
     }
 }

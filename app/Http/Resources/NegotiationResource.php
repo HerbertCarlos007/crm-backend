@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,15 +19,18 @@ class NegotiationResource extends JsonResource
             'id' => $this->id,
             'customer_id' => $this->customer_id,
             'stage_id' => $this->stage_id,
+            'stage_name' => $this->whenLoaded('stage', function () {
+                return $this->stage?->name;
+            }),
             'company_id' => $this->company_id,
             'closing_reason' => $this->closing_reason,
             'value' => $this->value,
             'status' => $this->status,
             'observation' => $this->observation,
             'order_number' => $this->order_number,
-            'estimated_closing_date' => $this->estimated_closing_date,
+            'estimated_closing_date' => Carbon::parse($this->estimated_closing_date)->format('d/m/Y'),
             'created_by' => $this->created_by,
-            'created_at' => $this->created_at,
+            'created_at' => Carbon::parse($this->created_at)->format('d/m/Y'),
         ];
     }
 }

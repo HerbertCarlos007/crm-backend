@@ -25,7 +25,7 @@ class StoreUpdateNegotiationRequest extends FormRequest
             'customer_id' => 'required|exists:customers,id',
             'stage_id' => 'integer',
             'company_id' => 'required|exists:companies,id',
-            'closing_reason' => 'integer',
+            'closing_reason' => 'integer|nullable',
             'value' => 'string|nullable',
             'status' => 'string|nullable',
             'observation' => 'string|nullable',

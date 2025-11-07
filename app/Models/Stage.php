@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Stage extends Model
 {
@@ -17,5 +18,13 @@ class Stage extends Model
 
     public function company(): BelongsTo
     {
-    return $this->belongsTo(Company::class);}
+    return $this->belongsTo(Company::class);
+    }
+
+    public function negotiations(): HasMany
+    {
+        return $this->hasMany(Negotiation::class);
+    }
+
+
 }
