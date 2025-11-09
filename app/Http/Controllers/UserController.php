@@ -7,13 +7,14 @@ use App\Http\Requests\StoreUpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\Company;
 use App\Models\User;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use function Symfony\Component\String\u;
 
 class UserController extends Controller
 {
-    public function store(StoreUpdateUserRequest $request)
+    public function store(StoreUpdateUserRequest $request): UserResource
     {
         $avatarPath = null;
         $avatarUrl = null;
@@ -38,7 +39,7 @@ class UserController extends Controller
         ], 201);
     }
 
-    public function login(StoreUpdateLoginRequest $request)
+    public function login(StoreUpdateLoginRequest $request): UserResource
     {
         $data = $request->validated();
 
@@ -54,13 +55,13 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function index($companyId)
+    public function index($companyId): AnonymousResourceCollection
     {
         $users = User::where('company_id', $companyId)->get();
         return UserResource::collection($users);
     }
 
-    public function show(User $user)
+    public function show(User $user): UserResource
     {
         return new UserResource($user);
     }

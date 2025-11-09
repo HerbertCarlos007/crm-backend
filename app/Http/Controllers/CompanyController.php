@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUpdateCompanyRequest;
 use App\Http\Resources\CompanyResource;
 use App\Models\Company;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller
 {
-    public function store(StoreUpdateCompanyRequest $request)
+    public function store(StoreUpdateCompanyRequest $request): CompanyResource
      {
         $logoPath = null;
         $logoUrl = null;
@@ -29,17 +31,17 @@ class CompanyController extends Controller
         return new CompanyResource($company);
     }
 
-    public function index()
+    public function index(): AnonymousResourceCollection
     {
         return CompanyResource::collection(Company::all());
     }
 
-    public function show(Company $company)
+    public function show(Company $company): CompanyResource
     {
         return new CompanyResource($company);
     }
 
-    public function update(StoreUpdateCompanyRequest $request, Company $company)
+    public function update(StoreUpdateCompanyRequest $request, Company $company): CompanyResource
     {
         $validated = $request->validated();
         $company->update($validated);
@@ -47,8 +49,9 @@ class CompanyController extends Controller
         return new CompanyResource($company);
     }
 
-    public function destroy(Company $company)
+    public function destroy(Company $company): Response
     {
         $company->delete();
+        return response()->noContent();
     }
 }
