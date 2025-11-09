@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClosingReasonController;
 use App\Http\Controllers\CompanyController;
 
 use App\Http\Controllers\CustomerController;
@@ -33,3 +34,6 @@ Route::get('/customer/{companyId}', [CustomerController::class, 'index']);
 
 Route::post('/negotiation', [NegotiationController::class, 'store']);
 Route::get('/negotiation/{companyId}', [NegotiationController::class, 'index']);
+
+Route::post('/closing-reason', [ClosingReasonController::class, 'store']);
+Route::get('/closing-reason/{companyId}', [ClosingReasonController::class, 'index']);

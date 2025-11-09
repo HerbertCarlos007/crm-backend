@@ -38,4 +38,9 @@ class Company extends Model
     {
         return $this->hasMany(Negotiation::class);
     }
+
+    public function closingReasons(): HasMany
+    {
+        return $this->hasMany(ClosingReason::class);
+    }
 }
