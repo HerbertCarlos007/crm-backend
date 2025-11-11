@@ -7,6 +7,7 @@ use App\Http\Requests\StoreUpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\Company;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -14,7 +15,7 @@ use function Symfony\Component\String\u;
 
 class UserController extends Controller
 {
-    public function store(StoreUpdateUserRequest $request): UserResource
+    public function store(StoreUpdateUserRequest $request): JsonResponse
     {
         $avatarPath = null;
         $avatarUrl = null;
@@ -39,7 +40,7 @@ class UserController extends Controller
         ], 201);
     }
 
-    public function login(StoreUpdateLoginRequest $request): UserResource
+    public function login(StoreUpdateLoginRequest $request): JsonResponse
     {
         $data = $request->validated();
 
