@@ -18,6 +18,9 @@ class NegotiationResource extends JsonResource
         return [
             'id' => $this->id,
             'customer_id' => $this->customer_id,
+            'customer_name' => $this->whenLoaded('customer', function () {
+                return $this->customer->name;
+            }),
             'stage_id' => $this->stage_id,
             'stage_name' => $this->whenLoaded('stage', function () {
                 return $this->stage?->name;

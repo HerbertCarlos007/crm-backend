@@ -18,7 +18,7 @@ class NegotiationController extends Controller
 
     public function index($companyId): AnonymousResourceCollection
     {
-        $negotiations = Negotiation::with('stage:id,name')
+        $negotiations = Negotiation::with('stage:id,name', 'customer:id,name')
         ->where('company_id', $companyId)
         ->get();
         return NegotiationResource::collection($negotiations);
