@@ -11,7 +11,12 @@ class NegotiationController extends Controller
 {
     public function store(StoreUpdateNegotiationRequest $request): NegotiationResource
     {
+        $lastOrderNumber = Negotiation::max('order_number');
+        $newOrderNumber = $lastOrderNumber ? $lastOrderNumber + 1 : 1000;
+
         $validated = $request->validated();
+        $validated['order_number'] = $newOrderNumber;
+
         $negotiation = Negotiation::create($validated);
         return new NegotiationResource($negotiation);
     }
